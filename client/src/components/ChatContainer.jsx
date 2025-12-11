@@ -1,6 +1,6 @@
 import React from "react";
 import assets, { messagesDummyData } from "../assets/assets";
-import {formatMessageTime} from "../lib/utils.js";
+import { formatMessageTime } from "../lib/utils.js";
 
 const ChatContainer = ({ selectedUser, setSelectedUser }) => {
   const scrollEnd = React.useRef(null);
@@ -69,14 +69,36 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
         ))}
         <div ref={scrollEnd}></div>
       </div>
+
+      <div className="absolute bottom-0 right-0 left-0 flex items-center p-3 gap-3">
+        {/* ------------- Input Area ---------------- */}
+        <input
+          type="text"
+          placeholder="Type a message..."
+          className="flex-1 text-sm bg-[#8185B2]/10 border border-gray-600 rounded-full py-2 px-4 text-white outline-none placeholder:text-gray-400"
+        />
+        <input type="file" id="image" accept="image/png, image/jpg" hidden />
+        <label htmlFor="image">
+          <img
+            src={assets.gallery_icon}
+            alt="attach"
+            className="w-5 mr-2 cursor-pointer"
+          />
+        </label>
+        <img
+          src={assets.send_button}
+          alt="send"
+          className="w-7 cursor-pointer"
+        />
+      </div>
     </div>
   ) : (
     <div className="h-full flex flex-col justify-center items-center gap-2 text-white px-4 text-center max-md:hidden">
       <img src={assets.logo_icon} alt="chat icon" className="max-w-16" />
       <h2 className="text-2xl font-semibold">Chat anytime, anywhere</h2>
       <p className="text-gray-400">
-        Choose a user from the left sidebar to view your conversation history
-        and start a new chat. Connect and communicate with ease!
+        {/* Choose a user from the left sidebar to view your conversation history
+        and start a new chat. Connect and communicate with ease! */}
       </p>
     </div>
   );
