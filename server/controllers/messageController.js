@@ -24,10 +24,10 @@ export const getUsersForSidebar = async (req, res) => {
 
 
 
-        return res.status(200).json({ success:true, message: 'Users fetched successfully', data: users });
+        return res.json({ success:true, message: 'Users fetched successfully', data: users });
     } catch (err) {
         console.error('Error fetching users for sidebar:', err.message);
-        return res.status(500).json({ success:false, message: 'Server error fetching users' });
+        return res.json({ success:false, message: 'Server error fetching users' });
     }
 };
 
@@ -48,11 +48,11 @@ export const getMessages = async (req, res) => {
             { senderId: selectedUserId, receiverId: myId, seen: false },
             { $set: { seen: true } }
         );
-        return res.status(200).json({ success:true, message: 'Messages fetched successfully', data: messages });
+        return res.json({ success:true, message: 'Messages fetched successfully', data: messages });
     } catch (error) {
         
         console.error('Error fetching messages:', err.message);
-        return res.status(500).json({ success:false, message: 'Server error fetching messages' });
+        return res.json({ success:false, message: 'Server error fetching messages' });
     }
 };
 
@@ -61,11 +61,11 @@ export const markMessagesAsSeen = async (req, res) => {
     try {
         const { id } = req.params;
         await Message.findByIdAndUpdate(id, { seen: true });
-        return res.status(200).json({ success:true, message: 'Messages marked as seen' });
+        return res.json({ success:true, message: 'Messages marked as seen' });
     }
     catch (error) {
         console.error('Error marking messages as seen:', err.message);
-        return res.status(500).json({ success:false, message: 'Server error marking messages as seen' });
+        return res.json({ success:false, message: 'Server error marking messages as seen' });
     }
 };
 
