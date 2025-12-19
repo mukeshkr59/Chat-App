@@ -52,7 +52,7 @@ app.use("/api/messages", messageRouter); // Assuming messageRouter is defined el
 // connect to MongoDB
 await connectDB();
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
