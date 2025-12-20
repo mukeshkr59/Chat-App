@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 const LoginPage = () => {
-    const [currState, setCurrState] = useState("Sign Up");
+    const [currState, setCurrState] = useState("Login");
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

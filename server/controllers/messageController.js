@@ -87,7 +87,7 @@ export const markMessagesAsSeen = async (req, res) => {
 // send message to a selected user
 export const sendMessage = async (req, res) => {
   try {
-    const { text, image } = req.body;
+    const { text = '', image } = req.body;
     const receiverId = req.params.id;
     const senderId = req.user._id;
 
@@ -100,7 +100,7 @@ export const sendMessage = async (req, res) => {
     const newMessage = await Message.create({
       senderId,
       receiverId,
-      text,
+      text: text || '',
       image: imageUrl,
     });
 

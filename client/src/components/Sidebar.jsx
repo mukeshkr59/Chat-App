@@ -14,7 +14,7 @@ const Sidebar = () => {
     setUnseenMessages,
   } = useContext(ChatContext);
 
-  console.log("Users in Sidebar:", users);
+  // console.log("Users in Sidebar:", users);
 
   // const { logout, onlineUsers } = useContext(AuthContext);
   const { logout, onlineUsers, authUser } = useContext(AuthContext);
@@ -97,7 +97,8 @@ const Sidebar = () => {
             <img
               src={user?.profilePic || assets.avatar_icon}
               alt="profile"
-              className="w-[35px] aspect-[1/1] rounded-full"
+              className="w-[35px] aspect-square rounded-full"
+              
             />
             <div className="flex flex-col leading-5">
               <p>{user.fullName}</p>

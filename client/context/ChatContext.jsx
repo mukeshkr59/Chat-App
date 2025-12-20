@@ -22,7 +22,8 @@ export const ChatProvider = ({ children }) => {
         setUnseenMessages(data.unseenMessages);
       }
     } catch (error) {
-      toast.error(error.message);
+      console.error("Error fetching users:", error.message);
+      // Suppress toast for this non-critical error to avoid spam
     }
   };
 
@@ -58,14 +59,18 @@ export const ChatProvider = ({ children }) => {
   };
 
   // Function to subscribe to messages for selected user
-  const subscribeToMessages = async (userId) => {
+  const subscribeToMessages = () => {
     if (!socket) return;
+
+    socket.off("newMessage"); // Remove any existing listeners first
 
     socket.on("newMessage", (newMessage) => {
       if (selectedUser && newMessage.senderId === selectedUser._id) {
         newMessage.seen = true;
         setMessages((prevMessages) => [...prevMessages, newMessage]);
-        axios.put(`/api/messages/mark/${newMessage._id}`);
+        axios.put(`/api/messages/mark/${newMessage._id}`).catch((error) => {
+          console.error("Error marking message as seen:", error.message);
+        });
       } else {
         setUnseenMessages((prevUnseenMessages) => ({
           ...prevUnseenMessages,
