@@ -11,7 +11,7 @@ dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 
 // Initialize socket.io server
 export const io = new Server(server, {
@@ -52,12 +52,12 @@ app.use("/api/messages", messageRouter); // Assuming messageRouter is defined el
 // connect to MongoDB
 await connectDB();
 
-if(process.env.NODE_ENV !== "production"){
-  server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}
+// if(process.env.NODE_ENV !== "production"){
+//   server.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+//   });
+// }
 
-export default server;
+export { server } ;
 
         
