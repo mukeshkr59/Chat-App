@@ -3,6 +3,7 @@ import gallery_icon from './gallery_icon.svg'
 import help_icon from './help_icon.png'
 import logo_icon from './logo_icon.svg'
 import logo_big from './logo_big.svg'
+import batiyao_logo from './batiyao_logo.svg'
 import logo from './logo.png'
 import profile_richard from './profile_richard.png'
 import profile_alison from './profile_alison.png'
@@ -27,6 +28,7 @@ const assets = {
     gallery_icon,
     help_icon,
     logo_big,
+    batiyao_logo,
     logo_icon,
     logo,
     search_icon,
