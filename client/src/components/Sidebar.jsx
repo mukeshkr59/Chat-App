@@ -37,12 +37,14 @@ const Sidebar = () => {
     : safeUsers;
 
   // useEffect(() => {
-  if (authUser) getUsers();
+  // if (authUser) getUsers();
   // }, [onlineUsers]);
 
   useEffect(() => {
+    if(authUser){
     getUsers();
-  }, [getUsers]);
+    }
+  }, [authUser]);
 
   return (
     <div
