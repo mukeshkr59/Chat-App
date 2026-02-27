@@ -14,28 +14,28 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // Initialize socket.io server
-// export const io = new Server(server, {
-//   cors: { origin: "*" },
-// });
-
-const allowedOrigins = [
-  process.env.FRONTEND_URL, 
-];
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
-
 export const io = new Server(server, {
-  cors: corsOptions,
+  cors: { origin: "*" },
 });
+
+// const allowedOrigins = [
+//   process.env.FRONTEND_URL, 
+// ];
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+// };
+
+// export const io = new Server(server, {
+//   cors: corsOptions,
+// });
 
 // app.use(cors(corsOptions));
 
@@ -62,8 +62,8 @@ io.on("connection", (socket) => {
 
 // Middleware
 app.use(express.json({ limit: "4mb" }));
-app.use(cors(corsOptions));
-// app.use(cors());
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // Route Setup
 app.use("/api/status", (req, res) => {
