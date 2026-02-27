@@ -25,7 +25,7 @@ const LoginPage = () => {
         if(isLoading) return;
         setIsLoading(true);
 
-        login(currState === "Sign Up" ? "signup" : "login", {
+        await login(currState === "Sign Up" ? "signup" : "login", {
             fullName,
             email,
             password,
