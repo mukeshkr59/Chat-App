@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 // import { get } from "mongoose";
 
 const ChatContainer = () => {
-  const { messages, getMessages, setMessages, sendMessage, selectedUser, setSelectedUser } = useContext(ChatContext);
+  const { messages, getMessages, setMessages, sendMessage, selectedUser, setSelectedUser, isMessagesLoading } = useContext(ChatContext);
   const { authUser, onlineUsers } = useContext(AuthContext);
 
   const scrollEnd = React.useRef(null);
@@ -70,6 +70,24 @@ const ChatContainer = () => {
         <img src={assets.help_icon} alt="" className="max-md:hidden max-w-5" />
       </div>
       {/*-------------- Chat Area --------------- */}
+      {isMessagesLoading ? (
+        // Skeleton loader
+        <div className="flex flex-col h-[calc(100%-120px)] overflow-y-scroll p-4 pb-6 gap-4">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className={`flex items-end gap-2 ${i % 2 === 0 ? 'justify-end' : 'flex-row-reverse'}`}>
+              {/* Avatar skeleton */}
+              <div className="w-7 h-7 rounded-full bg-white/10 animate-pulse shrink-0" />
+              {/* Bubble skeleton */}
+              <div
+                className={`h-9 rounded-lg bg-white/10 animate-pulse ${
+                  i % 2 === 0 ? 'rounded-br-none' : 'rounded-bl-none'
+                }`}
+                style={{ width: `${120 + (i * 23) % 100}px` }} // varied widths
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
       <div className="flex flex-col h-[calc(100%-120px)] overflow-y-scroll p-4 pb-6 text-white">
         {messages.map((message, index) => (
           <div
@@ -113,6 +131,7 @@ const ChatContainer = () => {
         ))}
         <div ref={scrollEnd}></div>
       </div>
+      )}
 
       <div className="absolute bottom-0 right-0 left-0 flex items-center p-3 gap-3">
         {/* ------------- Input Area ---------------- */}
