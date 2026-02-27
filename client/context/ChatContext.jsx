@@ -41,7 +41,7 @@ export const ChatProvider = ({ children }) => {
     } catch (error) {
       toast.error(error.message);
     }finally{
-      setMessagesLoading(false);
+      setIsMessagesLoading(false);
     }
   };
 
