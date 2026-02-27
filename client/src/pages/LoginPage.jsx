@@ -11,15 +11,19 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const [bio, setBio] = useState("");
     const [isDataSubmitted, setIsDataSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const { login } = useContext(AuthContext);
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault(); 
         if(currState === "Sign Up" && !isDataSubmitted){
             setIsDataSubmitted(true);
+            return;
         }
 
+        if(isLoading) return;
+        setIsLoading(true);
 
         login(currState === "Sign Up" ? "signup" : "login", {
             fullName,
@@ -27,6 +31,7 @@ const LoginPage = () => {
             password,
             bio,
         });
+        setIsLoading(false);
     };
 
   return (
@@ -65,8 +70,8 @@ const LoginPage = () => {
             )
         }
 
-       <button type='submit' className='py-3 bg-linear-to-r from-purple-400 to-violet-600 text-white rounded-md cursor-pointer'>
-          {currState === "Sign Up" ? "Create Account": "Login Now"}
+       <button type='submit' disabled={isLoading} className={`py-3 bg-linear-to-r from-purple-400 to-violet-600 text-white rounded-md ${isLoading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}>
+          { isLoading ? "Please wait..." : currState === "Sign Up" ? "Create Account": "Login Now"}
        </button>
        <div className="flex items-center gap-2 text-sm text-gray-500">
         <input type="checkbox" />
