@@ -9,6 +9,7 @@ export const ChatProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [unseenMessages, setUnseenMessages] = useState({});
+  const [isMessagesLoading, setIsMessagesLoading] = useState(false);
 
   const { socket, axios } = useContext(AuthContext);
 
@@ -29,6 +30,8 @@ export const ChatProvider = ({ children }) => {
 
   // Function to get messages for selected user
   const getMessages = async (userId) => {
+    setIsMessagesLoading(true);  // will Start loading
+    setMessages([]);             //  this will Clear old messages immediately
     try {
       const { data } = await axios.get(`/api/messages/${userId}`);
 
@@ -37,6 +40,8 @@ export const ChatProvider = ({ children }) => {
       }
     } catch (error) {
       toast.error(error.message);
+    }finally{
+      setMessagesLoading(false);
     }
   };
 
@@ -102,6 +107,7 @@ export const ChatProvider = ({ children }) => {
     setSelectedUser,
     unseenMessages,
     setUnseenMessages,
+    isMessagesLoading,
   };
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
