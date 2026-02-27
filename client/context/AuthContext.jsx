@@ -59,6 +59,7 @@ export const AuthProvider = ({ children }) => {
     toast.success("Logged out successfully");
     socketRef.current?.disconnect();
     socketRef.current = null;
+    setSocket(null);
     // socket.disconnect();
   };
 
