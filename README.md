@@ -269,7 +269,7 @@ The app will be available at `http://localhost:5173`.
 **Mukesh**
 
 - GitHub: [@mukeshkr59](https://github.com/mukeshkr59)
-- LinkedIn: [mukesh-kumar-vishwakarma]([https://linkedin.com/in/your-linkedin](https://www.linkedin.com/in/mukesh-kumar-vishwakarma/))
+- LinkedIn: [mukesh-kumar-vishwakarma](https://www.linkedin.com/in/mukesh-kumar-vishwakarma/)
 
 ---
 
