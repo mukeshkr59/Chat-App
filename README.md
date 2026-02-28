@@ -252,8 +252,6 @@ The app will be available at `http://localhost:5173`.
 
 ## 📸 Screenshots
 
-> _Add screenshots of your app here_
-
 ```
 Login Page    →  /login
 Home Page     →  / (Sidebar + ChatContainer + RightSidebar)
