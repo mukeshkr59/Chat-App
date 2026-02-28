@@ -250,21 +250,16 @@ The app will be available at `http://localhost:5173`.
 
 ---
 
-## 📸 Screenshots
 
 ## 📸 Screenshots
 
-| Login Page | Chat View |
+| Login Page | Profile Page |
 |---|---|
-| ![Login](./screenshots/Login.png) | ![Home](./screenshots/HomePage.png) |
+| ![Login](./screenshots/Login.png) | ![Profile](./screenshots/Profile.png) |
 
-| Profile Page |
+| Chat View |
 |---|
-| ![Profile](./screenshots/Profile.png) |
-
-Login Page    →  ./screenshots/Login.png
-Home Page     →  / (Sidebar + ChatContainer + RightSidebar)
-Profile Page  →  /profile
+| ![Home](./screenshots/HomePage.png) |
 
 
 ---
