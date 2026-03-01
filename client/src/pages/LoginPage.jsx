@@ -74,7 +74,7 @@ const LoginPage = () => {
           { isLoading ? "Please wait..." : currState === "Sign Up" ? "Create Account": "Login Now"}
        </button>
        <div className="flex items-center gap-2 text-sm text-gray-500">
-        <input type="checkbox" />
+        <input type="checkbox" required />
         <p>Agree to the terms of use & privecy policy. </p>
        </div>
 
